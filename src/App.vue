@@ -1,30 +1,58 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <HeaderSection @openNav="openNav" />
+    <main>
+      <HeroSection />
+      <SkillsSection />
+    </main>
+    <footer>
+      <p>Made using Vue.js &copy; {{ currentYear }}</p>
+    </footer>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script>
+import HeaderSection from "./components/HeaderSection.vue";
+import HeroSection from "./components/HeroSection.vue";
+import SkillsSection from "./components/SkillsSection.vue";
+export default {
+  components: {
+    HeaderSection,
+    HeroSection,
+    SkillsSection,
+  },
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
+  methods: {
+    openNav() {
+      // Implement your logic here
+    },
+  },
+};
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+footer {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 0.89) 0%,
+    rgba(9, 9, 121, 0.96) 35%,
+    rgba(6, 81, 168, 0.96) 62%,
+    rgba(15, 161, 190, 0.89) 100%
+  );
+  margin-top: 1rem;
+  padding: 20px;
+  text-align: center;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+footer a,
+footer h3,
+footer p {
+  color: #ecf0f2;
+  text-decoration: none;
 }
 </style>
